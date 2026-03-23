@@ -25,7 +25,7 @@ A complete, working backend application source code, demonstrating all specified
 
 # Submission and Timeline:
 Repository: The completed project must be hosted in a public GitHub repository.
-Deadline: The maximum allowed time for completion is 5 days from the receipt of this task.
+Deadline: The maximum allowed time for completion is 3 days from the receipt of this task.
 You would be added to the Github repo.
 You can create a branch by your name.
 You are supposed to push your daily updates to that branch.
