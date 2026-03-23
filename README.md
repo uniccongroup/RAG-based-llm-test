@@ -30,8 +30,6 @@ You would be added to the Github repo.
 You can create a branch by your name.
 You are supposed to push your daily updates to that branch.
 Your daily/weekly progress would be based on the code available on Github.
-The time available to complete the test would be one week.
-Grading: The candidate with the maximum BE functionality would receive the highest score, and the FE can be minimal. There is no score at all for the UI.
 
 NOTE: THIS IS AN INDIVIDUAL TASK; COLLABORATIONS CAN LEAD TO DISQUALIFICATION
 
