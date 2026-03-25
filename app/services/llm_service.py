@@ -33,15 +33,29 @@ class LLMService:
             self._setup_mock()
     
     def _setup_huggingface(self):
-        """Setup Hugging Face LLM."""
+        """Setup Hugging Face LLM via Inference API."""
+        if not settings.hf_api_token:
+            logger.warning("No HF_API_TOKEN configured; falling back to mock LLM")
+            self._setup_mock()
+            return
         try:
-            from langchain_community.llms import HuggingFaceHub
-            
-            self.llm = HuggingFaceHub(
-                repo_id=settings.hf_model_name,
-                huggingfacehub_api_token=settings.hf_api_token or "hf_default_token",
-                model_kwargs={"max_new_tokens": 256, "temperature": 0.7}
-            )
+            # Prefer the maintained langchain-huggingface package
+            try:
+                from langchain_huggingface import HuggingFaceEndpoint  # type: ignore
+                self.llm = HuggingFaceEndpoint(
+                    repo_id=settings.hf_model_name,
+                    huggingfacehub_api_token=settings.hf_api_token,
+                    max_new_tokens=256,
+                    temperature=0.7,
+                )
+            except ImportError:
+                # Fallback to langchain_community
+                from langchain_community.llms import HuggingFaceHub  # type: ignore
+                self.llm = HuggingFaceHub(
+                    repo_id=settings.hf_model_name,
+                    huggingfacehub_api_token=settings.hf_api_token,
+                    model_kwargs={"max_new_tokens": 256, "temperature": 0.7},
+                )
             logger.info("Hugging Face LLM initialized successfully")
         except Exception as e:
             logger.warning(f"Failed to setup Hugging Face LLM: {e}")

@@ -29,7 +29,7 @@ class Settings(BaseSettings):
     chunk_size: int = 500
     chunk_overlap: int = 50
     top_k_retrieval: int = 3
-    similarity_threshold: float = 0.5
+    similarity_threshold: float = 0.05
     
     # Paths
     data_dir: str = "data"
