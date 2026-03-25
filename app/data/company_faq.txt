@@ -1,0 +1,22 @@
+Company X Course Offerings
+
+Company X offers the following courses:
+- Web Development Bootcamp: 12-week full-stack program covering HTML, CSS, JavaScript, React, and Node.js
+- Data Science Certificate: 10-week program covering Python, Pandas, SQL, Machine Learning, and Data Visualization
+- Cloud Architecture Course: 8-week program covering AWS, Azure, and cloud design patterns
+
+Pricing and Payment
+- Web Development Bootcamp: $3,500
+- Data Science Certificate: $4,200
+- Cloud Architecture: $2,800
+- Payment plans available: 3 monthly installments or full payment with 10% discount
+
+Student Policies
+- Refund policy: Full refund within first 7 days, 50% refund within first 14 days
+- Support hours: Monday-Friday, 9 AM - 6 PM EST
+- Contact: support@companyx.edu or call 1-800-555-0123
+
+Course Prerequisites
+- Web Development: Basic computer literacy, no coding experience required
+- Data Science: Basic Python knowledge recommended
+- Cloud Architecture: Basic understanding of networking and servers

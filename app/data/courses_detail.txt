@@ -1,0 +1,18 @@
+Course Detailed Information
+
+Web Development Bootcamp (12 weeks)
+- Start dates: Every first Monday of the month
+- Format: Live online classes + recorded sessions
+- Projects: Build 5 full-stack applications
+- Career support: Resume review, interview prep, job placement assistance
+
+Data Science Certificate (10 weeks)
+- Start dates: Monthly cohorts
+- Format: Self-paced with weekly live Q&A sessions
+- Tools covered: Python, Jupyter, Pandas, Scikit-learn, Tableau
+- Capstone: Real-world data analysis project
+
+Cloud Architecture Course (8 weeks)
+- Start dates: Quarterly
+- Format: Evening classes (Tue/Thu, 7-9 PM EST)
+- Certifications prep: AWS Solutions Architect
