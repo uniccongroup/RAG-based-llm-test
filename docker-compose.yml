@@ -10,7 +10,7 @@ services:
     environment:
       - DEBUG=False
       - LLM_PROVIDER=huggingface
-      - HF_MODEL_NAME=mistralai/Mistral-7B-Instruct-v0.1
+      - HF_MODEL_NAME=Qwen/Qwen2.5-7B-Instruct
       - LOG_LEVEL=INFO
     volumes:
       - ./data:/app/data
