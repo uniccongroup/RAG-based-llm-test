@@ -1,8 +1,8 @@
-# Architecture Documentation
+﻿# Architecture Documentation
 
 ## System Overview
 
-The UNICCON RAG-based LLM Chatbot is a modern, distributed system that combines Large Language Models with Retrieval-Augmented Generation to provide accurate, contextually relevant answers to FAQs.
+The Academy X RAG-based LLM Chatbot is a modern, distributed system that combines Large Language Models with Retrieval-Augmented Generation to provide accurate, contextually relevant answers to FAQs.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -568,7 +568,7 @@ CDN + Monitoring + Logging
 ### Phase 3
 - [ ] Multi-language support
 - [ ] Document versioning
-- [ ] Fine-tuning on Company X data
+- [ ] Fine-tuning on Academy X data
 - [ ] Reranking with cross-encoders
 
 ### Phase 4

@@ -1,4 +1,4 @@
-"""Language Model Integration Service."""
+﻿"""Language Model Integration Service."""
 import logging
 from typing import Optional, List
 from app.core.config import settings
@@ -13,6 +13,7 @@ class LLMService:
         """Initialize LLM service."""
         self.provider = settings.llm_provider
         self.llm = None
+        self._is_chat_model = False
         self._initialize_llm()
     
     def _initialize_llm(self):
@@ -33,30 +34,20 @@ class LLMService:
             self._setup_mock()
     
     def _setup_huggingface(self):
-        """Setup Hugging Face LLM via Inference API."""
+        """Setup Hugging Face LLM via direct Inference API (Python 3.14 compatible)."""
         if not settings.hf_api_token:
             logger.warning("No HF_API_TOKEN configured; falling back to mock LLM")
             self._setup_mock()
             return
         try:
-            # Prefer the maintained langchain-huggingface package
-            try:
-                from langchain_huggingface import HuggingFaceEndpoint  # type: ignore
-                self.llm = HuggingFaceEndpoint(
-                    repo_id=settings.hf_model_name,
-                    huggingfacehub_api_token=settings.hf_api_token,
-                    max_new_tokens=256,
-                    temperature=0.7,
-                )
-            except ImportError:
-                # Fallback to langchain_community
-                from langchain_community.llms import HuggingFaceHub  # type: ignore
-                self.llm = HuggingFaceHub(
-                    repo_id=settings.hf_model_name,
-                    huggingfacehub_api_token=settings.hf_api_token,
-                    model_kwargs={"max_new_tokens": 256, "temperature": 0.7},
-                )
-            logger.info("Hugging Face LLM initialized successfully")
+            self.llm = _HFInferenceLLM(
+                model=settings.hf_model_name,
+                token=settings.hf_api_token,
+                max_new_tokens=256,
+                temperature=0.7,
+            )
+            self._is_chat_model = False
+            logger.info(f"Hugging Face Inference API initialized ({settings.hf_model_name})")
         except Exception as e:
             logger.warning(f"Failed to setup Hugging Face LLM: {e}")
             self._setup_mock()
@@ -113,8 +104,9 @@ class LLMService:
         
         try:
             prompt = self._build_prompt(query, context)
-            response = self.llm(prompt)
-            return response.strip() if response else "I could not generate a response."
+            response = self.llm.invoke(prompt)
+            text = response.content if hasattr(response, "content") else str(response)
+            return text.strip() if text else "I could not generate a response."
         except Exception as e:
             logger.error(f"Error generating response: {e}")
             return f"Error generating response: {str(e)}"
@@ -129,16 +121,49 @@ class LLMService:
         Returns:
             Formatted prompt
         """
-        prompt = f"""You are a helpful FAQ assistant for Company X, an Edu-Tech organization.
-Use the provided context to answer the user's question accurately and concisely.
+        prompt = f"""You are a friendly and knowledgeable support assistant for Academy X, a tech training hub that offers practical, industry-focused technology programs.
+Your job is to help prospective and current trainees by answering their questions clearly and conversationally.
 
-Context:
+Guidelines:
+- Answer in your own words — do NOT copy the context verbatim
+- Be concise but complete; use bullet points only when listing 3 or more items
+- If the context does not contain enough information, say so honestly and suggest contacting the admissions team
+- Never mention universities, degrees, GPA, SAT scores, or traditional academic language
+- Maintain a warm, encouraging tone suited to someone exploring a career in tech
+
+Context (internal knowledge base — do not quote directly):
 {context}
 
-User Question: {query}
+Trainee Question: {query}
 
-Answer:"""
+Assistant:"""
         return prompt
+
+
+class _HFInferenceLLM:
+    """Wrapper around huggingface_hub.InferenceClient using chat_completion.
+
+    Uses the new HF router (router.huggingface.co) via chat_completion which
+    is fully compatible with Python 3.14 and the current HF Inference API.
+    """
+
+    def __init__(self, model: str, token: str, max_new_tokens: int = 256, temperature: float = 0.7):
+        from huggingface_hub import InferenceClient  # type: ignore
+        self.client = InferenceClient(model=model, token=token)
+        self.model = model
+        self.max_tokens = max_new_tokens
+        self.temperature = temperature
+
+    def invoke(self, prompt: str) -> str:
+        result = self.client.chat_completion(
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=self.max_tokens,
+            temperature=self.temperature,
+        )
+        return result.choices[0].message.content or ""
+
+    def __call__(self, prompt: str) -> str:
+        return self.invoke(prompt)
 
 
 class MockLLM:

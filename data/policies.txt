@@ -1,0 +1,82 @@
+﻿[SECTION: POLICIES]
+
+Refund Policy:
+Students are eligible for a full refund within 7 days of enrollment, provided they have not completed more than 10% of the course content. After 7 days, refunds are not guaranteed and are evaluated on a case-by-case basis.
+
+---
+
+Attendance Policy:
+Students are required to attend at least 80% of live sessions to qualify for certification. Attendance is tracked automatically through the learning platform.
+
+---
+
+Certification Policy:
+To receive a certificate of completion, students must:
+- Complete all required assignments
+- Submit and pass the final capstone project
+- Meet the minimum attendance requirement
+
+---
+
+Late Submission Policy:
+Assignments submitted after the deadline may incur a penalty unless prior approval has been granted by the instructor or support team.
+
+---
+
+Deferral Policy:
+Students may request to defer their enrollment to a future cohort if they are unable to continue. Deferral requests must be submitted at least 7 days before the next cohort begins.
+
+---
+
+Withdrawal Policy:
+Students who wish to withdraw from a program must notify the support team via email. Withdrawal does not automatically guarantee a refund.
+
+---
+
+Code of Conduct:
+All students are expected to maintain respectful and professional behavior. Harassment, plagiarism, or misconduct may result in suspension or removal from the program.
+
+---
+
+Academic Integrity Policy:
+Students must submit original work. Any form of cheating or plagiarism will result in disciplinary action, including possible disqualification from certification.
+
+---
+
+Grading Policy:
+Student performance is evaluated based on:
+- Assignments (40%)
+- Participation (20%)
+- Capstone project (40%)
+
+A minimum overall score of 60% is required to pass.
+
+---
+
+Access Policy:
+Students will retain access to course materials and recordings for up to 6 months after completing the program.
+
+---
+
+Technical Requirements Policy:
+Students must have access to a laptop with at least 8GB RAM and a stable internet connection to participate effectively in the program.
+
+---
+
+Support Policy:
+Students can reach out for help via email, live chat, or the platform support channel. Response times are typically within 24 hours.
+
+---
+
+Payment Policy:
+Students must complete payment before the course start date unless enrolled in an approved installment or financing plan.
+
+---
+
+Scholarship Policy:
+Scholarships are awarded based on merit and financial need. Recipients must maintain active participation throughout the program.
+
+---
+
+Job Placement Disclaimer:
+While Academy X provides career support and job referrals, job placement is not guaranteed.

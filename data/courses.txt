@@ -1,0 +1,97 @@
+﻿[SECTION: COURSE INFORMATION]
+
+Course Name: Software Development
+Track: Full-Stack Web Development
+Duration: 12 weeks (Bootcamp), 6 months (Part-time), 3–9 months (Self-paced)
+Level: Beginner to Intermediate
+Prerequisites: Basic computer literacy
+Price: ₦450,000 (Bootcamp), ₦320,000 (Part-time), ₦180,000 (Self-paced)
+Description: This track focuses on building modern web applications using technologies such as HTML, CSS, JavaScript, React, Node.js, and Python. Students will learn both frontend and backend development and work on real-world projects.
+Skills Gained: Web development, REST APIs, database design, version control (Git)
+Career Paths: Frontend Developer, Backend Developer, Full-Stack Developer
+
+---
+
+Course Name: Data Science and Artificial Intelligence
+Track: Data Science & AI
+Duration: 12 weeks (Bootcamp), 6 months (Part-time), 3–12 months (Self-paced)
+Level: Beginner to Intermediate
+Prerequisites: Basic mathematics and Python (recommended but not required)
+Price: ₦450,000 (Bootcamp), ₦320,000 (Part-time), ₦180,000 (Self-paced)
+Description: This course covers data analysis, machine learning, and AI model deployment. Students will learn tools such as Python, pandas, scikit-learn, TensorFlow, and data visualization libraries.
+Skills Gained: Data analysis, machine learning, model deployment, data visualization
+Career Paths: Data Scientist, Machine Learning Engineer, Data Analyst
+
+---
+
+Course Name: Cybersecurity
+Track: Security & Ethical Hacking
+Duration: 12 weeks (Bootcamp), 6 months (Part-time), 4–10 months (Self-paced)
+Level: Beginner to Intermediate
+Prerequisites: Basic computer and networking knowledge
+Price: ₦450,000 (Bootcamp), ₦320,000 (Part-time), ₦180,000 (Self-paced)
+Description: This track focuses on cybersecurity fundamentals, ethical hacking, network defense, and security operations. Students learn how to identify vulnerabilities and secure systems.
+Skills Gained: Network security, penetration testing, risk assessment, security tools
+Career Paths: Cybersecurity Analyst, Ethical Hacker, Security Engineer
+
+---
+
+Course Name: Cloud Computing and DevOps
+Track: Cloud & DevOps
+Duration: 12 weeks (Bootcamp), 6 months (Part-time), 3–9 months (Self-paced)
+Level: Intermediate
+Prerequisites: Basic programming and networking knowledge
+Price: ₦450,000 (Bootcamp), ₦320,000 (Part-time), ₦180,000 (Self-paced)
+Description: This course teaches cloud infrastructure, CI/CD pipelines, containerization, and deployment practices using tools like AWS, Docker, Kubernetes, and Terraform.
+Skills Gained: Cloud deployment, CI/CD, containerization, infrastructure as code
+Career Paths: DevOps Engineer, Cloud Engineer, Site Reliability Engineer
+
+---
+
+Course Name: UI/UX Design
+Track: Product Design
+Duration: 10 weeks (Bootcamp), 5 months (Part-time), 3–6 months (Self-paced)
+Level: Beginner
+Prerequisites: None
+Price: ₦400,000 (Bootcamp), ₦280,000 (Part-time), ₦150,000 (Self-paced)
+Description: This track focuses on user research, wireframing, prototyping, and visual design using tools like Figma. Students learn to design user-friendly digital products.
+Skills Gained: User research, prototyping, interaction design, usability testing
+Career Paths: UI Designer, UX Designer, Product Designer
+
+---
+
+Course Name: Product Management
+Track: Product Strategy & Execution
+Duration: 8 weeks (Bootcamp), 4 months (Part-time), 2–6 months (Self-paced)
+Level: Beginner to Intermediate
+Prerequisites: None
+Price: ₦380,000 (Bootcamp), ₦250,000 (Part-time), ₦140,000 (Self-paced)
+Description: This course teaches product lifecycle management, agile methodologies, stakeholder communication, and roadmap planning.
+Skills Gained: Product strategy, agile frameworks, stakeholder management, analytics
+Career Paths: Product Manager, Product Owner, Business Analyst
+
+---
+
+[SECTION: GENERAL COURSE INFORMATION]
+
+All courses include:
+- Live instructor-led sessions
+- Hands-on projects and assignments
+- Capstone project at the end of the program
+- Access to recorded lessons
+- Career support and mentorship
+
+---
+
+Flexible Learning Options:
+Students can choose between full-time, part-time, or self-paced learning depending on their schedule.
+
+---
+
+Certification:
+Students receive a Academy X Certificate of Completion after successfully finishing all course requirements.
+
+---
+
+Support:
+Students have access to mentors, peer groups, and technical support throughout the program.

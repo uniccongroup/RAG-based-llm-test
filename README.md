@@ -1,37 +1,170 @@
-# RAG-based-llm-test
-Project Goal: To design and implement a robust and functional backend service using the FASTAPI framework
+﻿---
+title: Academy X AI Chatbot
+emoji: 🤖
+colorFrom: indigo
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
 
-## Core Functionality
-The primary feature of this backend is to power an intelligent, LLM (Large Language Model)-powered FAQ Chatbot for a fictional Edu-Tech organisation, which we shall refer to as "Company X." This chatbot will utilise a RAG (Retrieval-Augmented Generation) architecture to provide highly accurate and contextually relevant answers.
+# Academy X RAG Chatbot
 
-## Key Technical Requirements:
+A production-ready **RAG (Retrieval-Augmented Generation)** FAQ chatbot backend built with FastAPI for the UNICCON AI Engineer assessment. It powers an intelligent assistant for **Academy X**, a tech training hub, by grounding LLM responses in a proprietary knowledge base.
 
-Framework: The entire backend must be built using FASTAPI to ensure high performance and asynchronous capabilities.
+**Live UI**: `/ui` · **Swagger Docs**: `/docs` · **Branch**: `john-eze`
 
-Architecture: Implement a RAG-based system where the LLM is anchored by a proprietary knowledge base (e.g., FAQs, course descriptions, student policies) of Company X. This involves:
+---
 
-Data Ingestion/Indexing: A process to load, chunk, and embed the source documents (the "FAQ" knowledge base).
+## Tech Stack
 
-Retrieval: Efficiently searching the indexed knowledge base to find the most relevant document snippets based on a user's query.
+| Component | Technology |
+|-----------|------------|
+| Framework | FastAPI 0.104+ (async) |
+| LLM | Qwen/Qwen2.5-7B-Instruct via HuggingFace InferenceClient |
+| Vector Search | TF-IDF + Cosine Similarity (scikit-learn) |
+| Server | Uvicorn |
+| Deployment | HuggingFace Spaces (Docker) |
 
-Generation: Passing the user query and the retrieved context to the LLM for generating a coherent and accurate answer (llmText generation).
+---
 
-Chatbot Endpoint: A dedicated RESTful endpoint (e.g., /api/chat) to accept user questions and return the LLM-generated response.
-Language Model Integration: Integration with a selected LLM provider (e.g., OpenAI, Hugging Face, Cohere) via their respective APIs.
+## Project Structure
 
-## Project Deliverable:
+```
+uniccon/
+├── app/
+│   ├── main.py                 # FastAPI app, routes, static files
+│   ├── api/
+│   │   ├── router.py           # API router
+│   │   └── chat.py             # Chat, upload, health endpoints
+│   ├── core/
+│   │   ├── config.py           # Settings (pydantic-settings + .env)
+│   │   └── logger.py           # Logging setup
+│   ├── models/
+│   │   └── schemas.py          # Pydantic request/response models
+│   ├── services/
+│   │   ├── rag_service.py      # RAG orchestration + greeting handling
+│   │   ├── vector_store.py     # TF-IDF vector store
+│   │   ├── chunking.py         # Text chunking
+│   │   └── llm_service.py      # LLM provider abstraction
+│   └── static/
+│       └── index.html          # Chat UI
+├── data/
+│   ├── faq.txt                 # Academy X FAQs
+│   ├── courses.txt             # Course catalogue
+│   ├── policies.txt            # Student policies
+│   ├── support.txt             # Support information
+│   └── index.pkl               # Pre-built TF-IDF index (29 chunks)
+├── Dockerfile                  # HuggingFace Spaces compatible (port 7860)
+├── render.yaml                 # Render.com deployment config
+├── setup_kb.py                 # Build the knowledge base index
+├── run.py                      # Entry point (reads PORT env var)
+├── requirements.txt
+└── .env                        # Local environment variables
+```
 
-A complete, working backend application source code, demonstrating all specified functionalities.
+---
 
-# Submission and Timeline:
-Repository: The completed project must be hosted in a public GitHub repository.
-Deadline: The maximum allowed time for completion is 3 days from the receipt of this task.
-You would be added to the Github repo.
-You can create a branch by your name.
-You are supposed to push your daily updates to that branch.
-Your daily/weekly progress would be based on the code available on Github.
+## Local Setup
 
-NOTE: THIS IS AN INDIVIDUAL TASK; COLLABORATIONS CAN LEAD TO DISQUALIFICATION
+### 1. Prerequisites
+- Python 3.8+
+- A [HuggingFace API token](https://huggingface.co/settings/tokens)
+
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Configure environment
+```bash
+copy .env.example .env
+```
+Edit `.env`:
+```bash
+LLM_PROVIDER=huggingface
+HF_MODEL_NAME=Qwen/Qwen2.5-7B-Instruct
+HF_API_TOKEN=hf_your_token_here
+SIMILARITY_THRESHOLD=0.05
+DEBUG=False
+```
+
+### 4. Build the knowledge base
+```bash
+python setup_kb.py
+```
+
+### 5. Run
+```bash
+python run.py
+```
+
+App starts at `http://localhost:8000`  
+- Chat UI → `http://localhost:8000/ui`  
+- Swagger → `http://localhost:8000/docs`
+
+---
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/health` | Service health check |
+| `POST` | `/api/chat` | Ask a question (RAG pipeline) |
+| `POST` | `/api/upload-documents` | Upload `.txt` files to re-index |
+| `GET` | `/api/index-status` | Check knowledge base index status |
+
+### Example — Chat
+```bash
+curl -X POST http://localhost:8000/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{"query": "What courses does Academy X offer?"}'
+```
+```json
+{
+  "query": "What courses does Academy X offer?",
+  "answer": "Academy X offers tracks in Software Development, Data Science & AI, Cybersecurity, Cloud & DevOps, UI/UX Design, and Product Management...",
+  "sources": ["..."],
+  "confidence": 0.72
+}
+```
+
+---
+
+## Deployment — HuggingFace Spaces
+
+The repo is pre-configured for HuggingFace Spaces (Docker SDK, port 7860).
+
+```bash
+# Add HF Space as a remote
+git remote add space https://huggingface.co/spaces/YOUR_HF_USERNAME/academyx-chatbot
+
+# Push
+git push space john-eze:main
+```
+
+Then in **Space Settings → Secrets**, add:
+- `HF_API_TOKEN` — your HuggingFace token
+- `DEBUG` — `False`
+
+---
+
+## Troubleshooting
+
+| Issue | Fix |
+|-------|-----|
+| `"Vector store is empty"` | Run `python setup_kb.py` |
+| `"No module named 'fastapi'"` | Run `pip install -r requirements.txt` |
+| No answers returned | Lower `SIMILARITY_THRESHOLD` in `.env` (default: `0.05`) |
+| LLM errors | Check `HF_API_TOKEN` is valid and `HF_MODEL_NAME` is correct |
+
+---
+
+## Submission
+
+> **Repository**: hosted on the UNICCON GitHub  
+> **Branch**: `john-eze`  
+> **Note**: This is an individual task — collaborations may lead to disqualification.
 
 
 

@@ -1,0 +1,82 @@
+﻿[SECTION: ENROLLMENT & ADMISSION]
+
+Q: What are the requirements to enroll at Academy X?
+A: Academy X is a tech training hub with no strict academic requirements. You need a passion for technology, basic computer literacy, a stable internet connection, and a minimum age of 18 (or 16 with parental consent). Beginners and professionals are welcome.
+
+---
+
+Q: How do I apply to Academy X?
+A: Visit the website, select your track, complete the application form, take a short aptitude quiz, attend a 30-minute orientation session, and confirm your spot by paying a deposit or choosing a payment plan. Decisions are typically given within 48 hours.
+
+---
+
+Q: When do new cohorts start?
+A: New cohorts begin every month. Applicants are encouraged to apply at least two weeks before their preferred start date.
+
+---
+
+[SECTION: PROGRAMS & TRACKS]
+
+Q: What training tracks does Academy X offer?
+A: Academy X offers Software Development, Data Science & AI, Cybersecurity, Cloud & DevOps, UI/UX Design, and Product Management. All tracks include hands-on projects and real-world case studies.
+
+---
+
+Q: How long are the programs?
+A: Program durations vary: Bootcamp (12 weeks full-time), Part-time (6 months), and Self-paced (3–12 months). All modes cover the same curriculum.
+
+---
+
+Q: Do I need prior coding experience to join?
+A: No prior coding experience is required for most beginner tracks. However, some advanced tracks benefit from basic programming knowledge.
+
+---
+
+Q: Are courses available online?
+A: Yes. Courses are available in-person, online (live), and hybrid formats. Recorded sessions are also provided.
+
+---
+
+[SECTION: FEES & PAYMENT]
+
+Q: How much do the programs cost?
+A: Bootcamp costs ₦450,000 ($300), Part-time ₦320,000 ($215), and Self-paced ₦180,000 ($120). Fees include course materials and career support.
+
+---
+
+Q: Do you offer payment plans or scholarships?
+A: Yes. Options include installment plans, income share agreements (ISA), merit scholarships, and group discounts.
+
+---
+
+[SECTION: CAREER SUPPORT]
+
+Q: What career support does Academy X provide?
+A: Career support includes coaching, CV reviews, interview preparation, employer partnerships, job referrals, and alumni networking.
+
+---
+
+Q: What is your job placement rate?
+A: Over 80% of graduates secure relevant roles within 6 months of completing their program.
+
+---
+
+Q: What certificate will I receive upon completion?
+A: Graduates receive a Academy X Certificate of Completion and are prepared for industry certifications.
+
+---
+
+[SECTION: LEARNING EXPERIENCE]
+
+Q: How are classes structured?
+A: Classes include live sessions, hands-on projects, peer collaboration, mentor check-ins, and a final capstone project.
+
+---
+
+Q: Who are the instructors?
+A: Instructors are active industry professionals such as software engineers and data scientists.
+
+---
+
+Q: What happens if I fall behind or need extra help?
+A: Support includes office hours, peer study groups, recorded lessons, and a dedicated support channel.

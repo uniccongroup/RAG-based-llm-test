@@ -1,110 +1,121 @@
-"""Sample FAQ data for Company X."""
+﻿"""Sample FAQ data for Academy X."""
 
 # Sample FAQs for testing and initial indexing
 SAMPLE_FAQS = """
-# Company X FAQ - Admissions
+# Academy X FAQ - Enrollment & Admission
 
-## Q: What are the admission requirements for undergraduate programs?
-A: To apply for our undergraduate programs, you need:
-- High school diploma or equivalent (GED)
-- Minimum 2.5 GPA
-- SAT score of 1000+ or ACT score of 20+
-- Completed application form
-- One letter of recommendation
-- Personal essay (250-500 words)
+## Q: What are the requirements to enroll at Academy X?
+A: Academy X is a tech training hub — there are no academic entry requirements like GPA or standardised test scores. All you need is:
+- A passion for technology and willingness to learn
+- Basic computer literacy (able to use a browser, keyboard, and file system)
+- A stable internet connection for online/hybrid tracks
+- Minimum age of 18 (or 16 with parental consent)
+We welcome beginners, career-changers, and professionals looking to upskill.
 
-## Q: What is the application deadline?
-A: Application deadlines vary by program:
-- Fall semester: June 30
-- Spring semester: November 30
-- Summer session: April 30
+## Q: How do I apply to Academy X?
+A: Applying is straightforward:
+1. Visit our website and select your desired track
+2. Fill out the online application form (takes about 10 minutes)
+3. Complete a short aptitude quiz (no coding knowledge required)
+4. Attend a free 30-minute orientation session with an advisor
+5. Confirm your spot by paying the enrolment deposit or arranging a payment plan
+You will receive a decision within 48 hours of your orientation.
 
-## Q: How much does tuition cost?
-A: Our tuition rates for the academic year 2024-2025:
-- Full-time undergraduate: $15,000 per semester
-- Part-time undergraduate: $500 per credit hour
-- Graduate programs: $12,000 per semester
-Financial aid and scholarships are available.
-
-## Q: Do you offer financial aid?
-A: Yes, Company X offers various financial aid options:
-- Merit-based scholarships
-- Need-based grants
-- Student loans
-- Work-study programs
-The Financial Aid Office can help you determine eligibility.
+## Q: When do new cohorts start?
+A: New cohorts kick off every month. Upcoming start dates are listed on our website. We recommend applying at least two weeks before your preferred start date to secure your place.
 
 ---
 
-# Company X FAQ - Course Information
+# Academy X FAQ - Programs & Tracks
 
-## Q: What is the average class size?
-A: Our average undergraduate class size is 25-30 students. Introductory courses may have 50-100 students, while upper-level and graduate courses typically have 15-20 students.
+## Q: What training tracks does Academy X offer?
+A: We currently offer the following tech tracks:
+- **Software Development** — Full-stack web development using Python, JavaScript, React, and Node.js
+- **Data Science & AI** — Data analysis, machine learning, and AI model deployment
+- **Cybersecurity** — Ethical hacking, network defence, and security operations
+- **Cloud & DevOps** — AWS/Azure infrastructure, CI/CD pipelines, and containerisation
+- **UI/UX Design** — User research, Figma prototyping, and product design
+- **Product Management** — Agile methodology, roadmapping, and stakeholder management
+All tracks include hands-on projects and real-world case studies.
 
-## Q: Are online courses available?
-A: Yes, Company X offers a variety of online courses. Most programs have a hybrid option combining in-person and online learning. Check the course catalog for specific offerings.
+## Q: How long are the programs?
+A: Program duration depends on the track and learning mode:
+- Bootcamp (intensive, full-time): 12 weeks
+- Part-time (evenings and weekends): 6 months
+- Self-paced (online): 3–12 months depending on your pace
+All modes cover the same curriculum and lead to the same certificate.
 
-## Q: How many credits do I need to graduate?
-A: Credit requirements depend on your degree:
-- Associate degree: 60 credits
-- Bachelor's degree: 120 credits
-- Master's degree: 30-36 credits
+## Q: Do I need prior coding experience to join?
+A: Most tracks have a beginner-friendly entry path — no prior coding experience is needed. However, some advanced modules (e.g., Data Science or Cloud) move faster if you already have basic programming knowledge. Our advisors will help you choose the right entry point.
 
-## Q: Can I change my major?
-A: Yes, you can change your major. Students typically have until the end of their sophomore year to declare or change their major without penalty. Contact your academic advisor for specific procedures.
-
----
-
-# Company X FAQ - Student Services
-
-## Q: How do I access the library?
-A: The main library is open Monday-Friday 8AM-8PM and Saturday-Sunday 10AM-6PM. Your student ID gives you access to physical materials and online databases. Virtual reference services are available 24/7.
-
-## Q: What health services are available?
-A: Our Health Center offers:
-- Primary care services
-- Mental health counseling
-- Immunizations and preventive care
-- Emergency services
-- Pharmacy services
-All services are free for full-time students.
-
-## Q: How do I find a roommate?
-A: The Residential Life Office maintains a roommate matching service. You can complete a questionnaire to be matched with compatible roommates. Housing is guaranteed for first-year students.
-
-## Q: What is the parking policy?
-A: All students must register their vehicles. Parking permits cost $50 per semester for student lots. Metered parking is available near academic buildings. Overnight parking is prohibited on campus.
+## Q: Are courses available online?
+A: Yes. All tracks are available in three delivery modes:
+- **In-person** at our training centres
+- **Online (live)** — real-time classes via video conference
+- **Hybrid** — mix of in-person workshops and online sessions
+Recorded sessions are provided for all live classes so you can revise at your own pace.
 
 ---
 
-# Company X FAQ - Academic Support
+# Academy X FAQ - Fees & Payment
 
-## Q: Is tutoring available?
-A: Yes, free tutoring is available through the Academic Success Center:
-- One-on-one tutoring in all subjects
-- Group study sessions
-- Writing center services
-- Math lab support
-Appointments can be scheduled online.
+## Q: How much do the programs cost?
+A: Tuition varies by track and mode:
+- Bootcamp (12 weeks, full-time): ₦450,000 / $300
+- Part-time (6 months): ₦320,000 / $215
+- Self-paced (online): ₦180,000 / $120
+All fees include course materials, project tools, and career support. There are no hidden charges.
 
-## Q: How do I request academic accommodations?
-A: Students with disabilities should contact the Disability Services Office. Accommodations may include:
-- Extended test time
-- Note-taking assistance
-- Alternative testing formats
-- Assistive technology access
+## Q: Do you offer payment plans or scholarships?
+A: Yes. We offer:
+- **Instalment plans** — split your tuition into 2 or 3 monthly payments at no extra cost
+- **Income Share Agreement (ISA)** — pay nothing upfront; pay 10% of your salary for 12 months once you land a job earning above the threshold
+- **Merit scholarships** — up to 40% discount for top performers in our aptitude quiz
+- **Group discount** — 15% off when 3 or more people from the same organisation enrol together
+Contact our admissions team to discuss the best option for you.
 
-## Q: What is the grading scale?
-A: Our grading scale is:
-- A: 90-100 (4.0)
-- B: 80-89 (3.0)
-- C: 70-79 (2.0)
-- D: 60-69 (1.0)
-- F: Below 60 (0.0)
-The minimum passing grade is D.
+---
 
-## Q: How do I appeal a grade?
-A: To appeal a grade, meet with the instructor within two weeks of receiving the grade. If unresolved, submit a formal appeal to the department chair with documentation.
+# Academy X FAQ - Career Support
+
+## Q: What career support does Academy X provide?
+A: Career support is built into every program:
+- Dedicated career coach assigned to each trainee
+- CV and LinkedIn profile review sessions
+- Mock technical and behavioural interviews
+- Access to our employer partner network (100+ companies)
+- Job referral programme for graduates
+- Alumni network and Slack community for ongoing networking
+Our goal is to get you job-ready, not just certificate-ready.
+
+## Q: What is your job placement rate?
+A: Over 80% of our graduates secure a relevant tech role within 6 months of completing their program. We track outcomes for 12 months post-graduation to continuously improve our curriculum and employer partnerships.
+
+## Q: What certificate will I receive upon completion?
+A: Graduates receive a Academy X Certificate of Completion specific to their track. Our certificates are recognised by our employer partners. Additionally, we prepare you for industry-standard certifications such as AWS Certified Cloud Practitioner, CompTIA Security+, and Google Data Analytics Certificate.
+
+---
+
+# Academy X FAQ - Learning Experience
+
+## Q: How are classes structured?
+A: Each week includes:
+- Live instruction sessions (2–3 times per week)
+- Hands-on lab exercises and mini-projects
+- Peer collaboration and code/design reviews
+- Weekly 1-on-1 check-ins with your mentor
+- A capstone project in the final weeks that you add to your portfolio
+
+## Q: Who are the instructors?
+A: All our instructors are active industry practitioners — software engineers, data scientists, and security professionals currently working at leading tech companies. They bring real-world problems into the classroom rather than purely academic content.
+
+## Q: What happens if I fall behind or need extra help?
+A: We have multiple support channels:
+- Office hours with instructors three times a week
+- A peer study group facilitated by a teaching assistant
+- 24/7 access to recorded lessons and written notes
+- A dedicated support chat channel on Slack
+No trainee is left behind — we proactively reach out if we notice someone struggling.
 """
 
 

@@ -1,4 +1,4 @@
-"""RAG (Retrieval-Augmented Generation) service."""
+﻿"""RAG (Retrieval-Augmented Generation) service."""
 import logging
 from typing import List, Tuple
 from app.services.vector_store import VectorStore
@@ -85,6 +85,18 @@ class RAGService:
         answer = self.llm_service.generate(query, context)
         return answer
     
+    # Common greetings and chitchat patterns
+    _GREETINGS = {
+        "hi", "hello", "hey", "howdy", "hiya", "yo", "sup",
+        "good morning", "good afternoon", "good evening", "good day",
+        "hi there", "hello there", "hey there",
+    }
+
+    def _is_greeting(self, query: str) -> bool:
+        """Return True if the query is a simple greeting or chitchat."""
+        normalised = query.strip().lower().rstrip("!.,?")
+        return normalised in self._GREETINGS
+
     def answer_question(self, query: str) -> Tuple[str, List[str], float]:
         """Answer a user question using RAG pipeline.
         
@@ -95,17 +107,28 @@ class RAGService:
             Tuple of (answer, sources, confidence_score)
         """
         logger.info(f"Processing query: {query}")
-        
+
+        # Handle greetings before touching the knowledge base
+        if self._is_greeting(query):
+            return (
+                "Hello! 👋 Welcome to Academy X. I'm here to help you with any questions "
+                "about our tech training programs, enrollment, fees, policies, and support. "
+                "What would you like to know?",
+                [],
+                1.0,
+            )
+
         # Step 1: Retrieve relevant documents
         retrieved_docs = self.retrieve(query)
-        
+
         if not retrieved_docs:
             logger.warning(f"No relevant documents found for query: {query}")
             return (
-                "I couldn't find relevant information in the knowledge base to answer your question. "
-                "Please try asking a different question or contact our support team.",
+                "I don't have specific information about that in my knowledge base right now. "
+                "You're welcome to ask about our courses, enrollment process, fees, policies, or support — "
+                "or reach out to us directly at support@academyx.abc and we'll be happy to help! 😊",
                 [],
-                0.0
+                0.0,
             )
         
         # Step 2: Prepare context from retrieved documents

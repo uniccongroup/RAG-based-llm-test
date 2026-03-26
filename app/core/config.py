@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     
     # LLM Configuration
     llm_provider: str = "huggingface"  # Options: huggingface, openai, cohere
-    hf_model_name: str = "mistralai/Mistral-7B-Instruct-v0.1"
+    hf_model_name: str = "Qwen/Qwen2.5-7B-Instruct"
     hf_api_token: Optional[str] = None
     openai_api_key: Optional[str] = None
     cohere_api_key: Optional[str] = None

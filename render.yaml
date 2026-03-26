@@ -1,0 +1,23 @@
+﻿services:
+  - type: web
+    name: academyx-rag-chatbot
+    runtime: python
+    buildCommand: pip install -r requirements.txt && python setup_kb.py
+    startCommand: python run.py
+    envVars:
+      - key: LLM_PROVIDER
+        value: huggingface
+      - key: HF_MODEL_NAME
+        value: Qwen/Qwen2.5-7B-Instruct
+      - key: HF_API_TOKEN
+        sync: false        # set manually in Render dashboard
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: COHERE_API_KEY
+        sync: false
+      - key: DEBUG
+        value: "False"
+      - key: SIMILARITY_THRESHOLD
+        value: "0.05"
+      - key: LOG_LEVEL
+        value: INFO

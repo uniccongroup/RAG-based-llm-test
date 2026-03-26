@@ -1,0 +1,81 @@
+[SECTION: PLATFORM SUPPORT]
+
+Q: I cannot log in to my account. What should I do?
+A: Ensure you are using the correct email and password. If the issue persists, try resetting your password using the “Forgot Password” option on the login page.
+
+---
+
+Q: How do I reset my password?
+A: Click on the “Forgot Password” link on the login page, enter your registered email address, and follow the instructions sent to your email.
+
+---
+
+Q: I did not receive the password reset email. What should I do?
+A: Check your spam or junk folder. If you still cannot find the email, contact support for assistance.
+
+---
+
+Q: How do I access my learning dashboard?
+A: Log in to your account and navigate to the dashboard section where all your enrolled courses and materials are available.
+
+---
+
+Q: I cannot access my course materials. What should I do?
+A: Ensure you are properly enrolled in the course. If the issue continues, log out and log back in, or contact support.
+
+---
+
+Q: What should I do if a video is not playing?
+A: Check your internet connection, refresh the page, or try accessing the platform using a different browser.
+
+---
+
+Q: The platform is slow or not loading. How can I fix this?
+A: Ensure you have a stable internet connection. Clear your browser cache or try a different device or browser.
+
+---
+
+Q: How can I contact technical support?
+A: You can contact support via email, live chat on the platform, or the support channel available in your dashboard.
+
+---
+
+Q: What is the response time for support requests?
+A: Support requests are typically responded to within 24 hours.
+
+---
+
+Q: Can I access the platform on mobile devices?
+A: Yes, the platform is accessible on both desktop and mobile devices through a web browser.
+
+---
+
+Q: Can I learn using my phone?
+A: Yes, you can access the learning platform using your phone through a web browser. However, for the best experience, especially when working on coding exercises or projects, a laptop or desktop is recommended.
+
+---
+
+Q: What should I do if I encounter a bug on the platform?
+A: Report the issue to the support team with details and screenshots if possible. This helps us resolve the issue quickly.
+
+---
+
+Q: How do I update my account information?
+A: You can update your profile details in the account settings section after logging in.
+
+---
+
+[SECTION: GENERAL SUPPORT INFORMATION]
+
+Technical Requirements:
+Students should have access to a laptop with at least 8GB RAM and a stable internet connection for the best experience.
+
+---
+
+Support Channels:
+Support is available via email, live chat, and platform messaging systems.
+
+---
+
+Account Issues:
+For any account-related issues, students are encouraged to contact support immediately for assistance.
