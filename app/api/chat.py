@@ -26,9 +26,18 @@ def get_rag_service() -> RAGService:
     return rag_service
 
 
-@router.get("/health", response_model=HealthResponse)
+@router.get(
+    "/health",
+    response_model=HealthResponse,
+    summary="Health Check",
+    description="Check whether the Academy X RAG Chatbot service is up and running. Use this to verify deployment status before sending queries.",
+    responses={
+        200: {"description": "Service is healthy and ready to accept requests."},
+        500: {"description": "Service is unavailable."},
+    },
+)
 async def health_check():
-    """Health check endpoint."""
+    """Returns the current health status of the service."""
     rag_service = get_rag_service()
     return HealthResponse(
         status="healthy",
@@ -36,16 +45,37 @@ async def health_check():
     )
 
 
-@router.post("/chat", response_model=ChatResponse)
+@router.post(
+    "/chat",
+    response_model=ChatResponse,
+    summary="Ask a Question",
+    description="""
+Send a natural language question and receive an AI-generated answer grounded in the Academy X knowledge base.
+
+**How it works:**
+1. The query is matched against the TF-IDF index to retrieve the most relevant knowledge base chunks.
+2. The retrieved chunks are passed as context to the `Qwen/Qwen2.5-7B-Instruct` LLM.
+3. The LLM synthesises a conversational answer — it does **not** copy text verbatim.
+
+**Example queries:**
+- `"What courses does Academy X offer?"`
+- `"How do I enrol in the Cybersecurity track?"`
+- `"What is the refund policy?"`
+- `"How much does the Data Science program cost?"`
+
+**Notes:**
+- Greetings like `"Hi"` or `"Hello"` are handled gracefully without hitting the LLM.
+- If no relevant context is found, a warm fallback message is returned.
+    """,
+    responses={
+        200: {"description": "Successfully generated an answer."},
+        400: {"description": "Query is empty or invalid."},
+        503: {"description": "Knowledge base is not yet indexed. Run `setup_kb.py` first."},
+        500: {"description": "Internal server error during generation."},
+    },
+)
 async def chat(request: ChatRequest):
-    """Chat endpoint for asking questions to the FAQ chatbot.
-    
-    Args:
-        request: Chat request with user query
-        
-    Returns:
-        Chat response with answer, sources, and confidence
-    """
+    """RAG pipeline: retrieve relevant chunks → generate answer with Qwen2.5-7B."""
     try:
         if not request.query or len(request.query.strip()) == 0:
             raise HTTPException(status_code=400, detail="Query cannot be empty")
@@ -79,16 +109,30 @@ async def chat(request: ChatRequest):
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
 
-@router.post("/upload-documents")
+@router.post(
+    "/upload-documents",
+    summary="Upload & Index Documents",
+    description="""
+Upload one or more `.txt` documents to extend or replace the Academy X knowledge base.
+
+Uploaded files are:
+1. Decoded as UTF-8 text
+2. Split into 500-character overlapping chunks
+3. Indexed into the TF-IDF vector store
+4. Persisted to `data/index.pkl`
+
+**Supported formats:** `text/plain` (`.txt`), `text/markdown` (`.md`)
+
+**Tip:** After uploading, the chatbot immediately uses the new content — no restart required.
+    """,
+    responses={
+        200: {"description": "Documents indexed successfully."},
+        400: {"description": "No files provided or no valid documents found."},
+        500: {"description": "Error during indexing."},
+    },
+)
 async def upload_documents(files: list[UploadFile] = File(...)):
-    """Upload and index documents for the FAQ knowledge base.
-    
-    Args:
-        files: List of text files to upload and index
-        
-    Returns:
-        Status message with number of documents indexed
-    """
+    """Upload .txt files and rebuild the TF-IDF knowledge base index."""
     try:
         if not files:
             raise HTTPException(status_code=400, detail="No files provided")
@@ -135,13 +179,26 @@ async def upload_documents(files: list[UploadFile] = File(...)):
         raise HTTPException(status_code=500, detail=f"Error uploading documents: {str(e)}")
 
 
-@router.get("/index-status", response_model=IndexStatusResponse)
+@router.get(
+    "/index-status",
+    response_model=IndexStatusResponse,
+    summary="Knowledge Base Index Status",
+    description="""
+Check whether the knowledge base vector index has been built and is ready to serve queries.
+
+If `indexed` is `false`, the chatbot cannot answer questions. Fix by either:
+- Running `python setup_kb.py` locally
+- Calling `POST /api/upload-documents` with your `.txt` files
+
+The `document_count` reflects the number of **chunks** (not files) currently in the index.
+    """,
+    responses={
+        200: {"description": "Index status returned successfully."},
+        500: {"description": "Error retrieving index status."},
+    },
+)
 async def index_status():
-    """Get the status of the knowledge base index.
-    
-    Returns:
-        Index status with document count
-    """
+    """Returns whether the TF-IDF index is built and how many chunks it contains."""
     try:
         rag_service = get_rag_service()
         

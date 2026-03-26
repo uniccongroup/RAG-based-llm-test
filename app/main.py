@@ -17,8 +17,74 @@ STATIC_DIR = Path(__file__).parent / "static"
 # Create FastAPI app
 app = FastAPI(
     title=settings.app_name,
-    description="RAG-based LLM FAQ Chatbot for Academy X",
-    version="1.0.0"
+    description="""
+## Academy X RAG-based FAQ Chatbot API
+
+This API powers an intelligent FAQ assistant for **Academy X**, a tech training hub.
+It uses a **Retrieval-Augmented Generation (RAG)** pipeline to answer questions by searching
+a proprietary knowledge base and generating contextual responses via a large language model.
+
+---
+
+### 🚀 Quick Start
+
+1. **Check the service is healthy** — `GET /api/health`
+2. **Ask a question** — `POST /api/chat` with `{"query": "What courses do you offer?"}`
+3. **Check index status** — `GET /api/index-status`
+4. **Upload new documents** — `POST /api/upload-documents` with `.txt` files
+
+---
+
+### 🏗️ Architecture
+
+```
+User Query → TF-IDF Retrieval → Top-K Context Chunks → Qwen2.5-7B LLM → Answer
+```
+
+- **Vector Store**: TF-IDF + Cosine Similarity (scikit-learn)
+- **LLM**: `Qwen/Qwen2.5-7B-Instruct` via HuggingFace InferenceClient
+- **Chunking**: 500-character chunks with 50-character overlap
+- **Knowledge Base**: Pre-indexed from `data/*.txt` (courses, FAQs, policies, support)
+
+---
+
+### 🔑 Environment Variables
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `HF_API_TOKEN` | ✅ Yes | HuggingFace API token (get one at huggingface.co/settings/tokens) |
+| `LLM_PROVIDER` | No | LLM backend: `huggingface` (default), `openai`, `cohere` |
+| `HF_MODEL_NAME` | No | HF model ID (default: `Qwen/Qwen2.5-7B-Instruct`) |
+| `SIMILARITY_THRESHOLD` | No | Min retrieval score 0–1 (default: `0.05`) |
+| `TOP_K_RETRIEVAL` | No | Number of context chunks to retrieve (default: `3`) |
+| `DEBUG` | No | Enable debug logging (default: `False`) |
+
+---
+
+### 💬 Chat UI
+A browser-based chat interface is available at **`/`** (or `/ui`).
+
+### 📬 Support
+Contact: support@academyx.abc
+    """,
+    version="1.0.0",
+    contact={
+        "name": "Academy X Support",
+        "email": "support@academyx.abc",
+    },
+    license_info={
+        "name": "UNICCON GROUP — AI Engineer Assessment",
+    },
+    openapi_tags=[
+        {
+            "name": "chat",
+            "description": "Core RAG chatbot endpoints — ask questions, upload documents, check index status.",
+        },
+        {
+            "name": "root",
+            "description": "Service information and health.",
+        },
+    ]
 )
 
 # Add CORS middleware
