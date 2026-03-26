@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  rag-chatbot:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - LLM_PROVIDER=${LLM_PROVIDER:-huggingface}
+      - HF_MODEL_NAME=${HF_MODEL_NAME:-gpt2-medium}
+      - MAX_NEW_TOKENS=${MAX_NEW_TOKENS:-80}
+      - TEMPERATURE=${TEMPERATURE:-0.1}
+    volumes:
+      - ./models_cache:/app/models_cache
+      - ./app/data:/app/app/data
+    restart: unless-stopped
