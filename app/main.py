@@ -37,21 +37,27 @@ app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 app.include_router(router)
 
 
-@app.get("/", tags=["root"])
+@app.get("/", include_in_schema=False)
 async def root():
-    """Root endpoint — API welcome message."""
+    """Serve the chat UI at root."""
+    return FileResponse(STATIC_DIR / "index.html")
+
+
+@app.get("/info", tags=["root"])
+async def info():
+    """API info endpoint."""
     return {
         "message": "Welcome to Academy X RAG-based LLM Chatbot",
         "version": "1.0.0",
         "docs_url": "/docs",
-        "chat_ui": "/ui",
+        "chat_ui": "/",
         "health_check": "/api/health"
     }
 
 
 @app.get("/ui", include_in_schema=False)
 async def chat_ui():
-    """Serve the chat UI."""
+    """Serve the chat UI (alias for root)."""
     return FileResponse(STATIC_DIR / "index.html")
 
 
