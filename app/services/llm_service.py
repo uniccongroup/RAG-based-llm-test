@@ -168,8 +168,8 @@ class _HFInferenceLLM:
 
 class MockLLM:
     """Mock LLM for testing when real LLM is not available."""
-    
-    def __call__(self, prompt: str) -> str:
+
+    def invoke(self, prompt: str) -> str:
         """Generate mock response."""
         if "admission" in prompt.lower():
             return "Thank you for your question about admissions. Please visit our admissions portal or contact our admissions office for detailed information about application requirements and timelines."
@@ -179,3 +179,6 @@ class MockLLM:
             return "We offer a variety of courses designed to enhance your skills. Please visit our course catalog for detailed descriptions and prerequisites."
         else:
             return "Thank you for your question. Based on our knowledge base, we recommend visiting our FAQ section or contacting our support team for more specific information."
+
+    def __call__(self, prompt: str) -> str:
+        return self.invoke(prompt)
