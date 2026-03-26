@@ -179,9 +179,8 @@ The repo is pre-configured for Render.com via `render.yaml`.
 
 ## Submission
 
-> **Repository**: hosted on the UNICCON GitHub  
-> **Branch**: `john-eze`  
-> **Note**: This is an individual task — collaborations may lead to disqualification.
+> **Repository**: [github.com/johnemekaeze/academyx-rag-chatbot](https://github.com/johnemekaeze/academyx-rag-chatbot)  
+> **Branch**: `main`
 
 
 
