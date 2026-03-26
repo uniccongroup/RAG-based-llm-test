@@ -1,17 +1,7 @@
-﻿---
-title: Academy X AI Chatbot
-emoji: 🤖
-colorFrom: indigo
-colorTo: purple
-sdk: docker
-app_port: 7860
-pinned: false
----
-
-# Academy X RAG Chatbot
+﻿# Academy X RAG Chatbot
 
 
-A production-ready **Retrieval-Augmented Generation (RAG)** FAQ chatbot backend built with **FastAPI**, deployed on HuggingFace Spaces. It powers an intelligent assistant for **Academy X** — a tech training hub — by grounding every LLM response in a proprietary knowledge base of courses, policies, FAQs, and support content.
+A production-ready **Retrieval-Augmented Generation (RAG)** FAQ chatbot backend built with **FastAPI**, deployed on **Render.com**. It powers an intelligent assistant for **Academy X** — a tech training hub — by grounding every LLM response in a proprietary knowledge base of courses, policies, FAQs, and support content.
 
 ---
 
@@ -19,9 +9,8 @@ A production-ready **Retrieval-Augmented Generation (RAG)** FAQ chatbot backend 
 
 | | URL |
 |---|---|
-| 💬 **Chat UI** | [johneze-academyx-chatbot.hf.space](https://johneze-academyx-chatbot.hf.space) |
-| 📖 **Swagger / API Docs** | [johneze-academyx-chatbot.hf.space/docs](https://johneze-academyx-chatbot.hf.space/docs) |
-| 🤗 **HuggingFace Space** | [huggingface.co/spaces/johneze/academyx-chatbot](https://huggingface.co/spaces/johneze/academyx-chatbot) |
+| 💬 **Chat UI** | [academyx-rag-chatbot.onrender.com](https://academyx-rag-chatbot.onrender.com) |
+| 📖 **Swagger / API Docs** | [academyx-rag-chatbot.onrender.com/docs](https://academyx-rag-chatbot.onrender.com/docs) |
 | 🎙️ **Ava — Voice & Chat Agent** | [jotform.com/agent/019d2989fc0972ac8e1c52ef9d0d3770d736](https://www.jotform.com/agent/019d2989fc0972ac8e1c52ef9d0d3770d736) |
 
 ---
@@ -60,7 +49,7 @@ Synthesised Answer  ──►  Returned via /api/chat
 | LLM | `Qwen/Qwen2.5-7B-Instruct` via HuggingFace InferenceClient |
 | Vector Store | TF-IDF + Cosine Similarity (scikit-learn) |
 | Server | Uvicorn |
-| Deployment | HuggingFace Spaces (Docker, port 7860) |
+| Deployment | Render.com (Python web service) |
 | Config | pydantic-settings + `.env` |
 
 ---
@@ -90,7 +79,7 @@ Synthesised Answer  ──►  Returned via /api/chat
 │   ├── courses.txt             # Course catalogue & descriptions
 │   ├── policies.txt            # Student & refund policies
 │   └── support.txt             # Technical support information
-├── Dockerfile                  # HuggingFace Spaces compatible (port 7860)
+├── Dockerfile                  # Docker image (local / alternative deployments)
 ├── render.yaml                 # Render.com deployment config
 ├── setup_kb.py                 # Builds and saves TF-IDF index from data/*.txt
 ├── run.py                      # Entry point — reads PORT env var for cloud compatibility
@@ -159,136 +148,21 @@ curl -X POST http://localhost:8000/api/chat \
 
 ---
 
-## Tech Stack
+## Deployment — Render.com
 
-| Component | Technology |
-|-----------|------------|
-| Framework | FastAPI 0.104+ (async) |
-| LLM | Qwen/Qwen2.5-7B-Instruct via HuggingFace InferenceClient |
-| Vector Search | TF-IDF + Cosine Similarity (scikit-learn) |
-| Server | Uvicorn |
-| Deployment | HuggingFace Spaces (Docker) |
+The repo is pre-configured for Render.com via `render.yaml`.
 
----
+1. Push this repo to GitHub (branch `john-eze`)
+2. Go to [render.com](https://render.com) → **New → Web Service**
+3. Connect your GitHub repo and select the `john-eze` branch
+4. Render auto-detects `render.yaml` — no manual config needed
+5. In **Environment → Secret Files / Env Vars**, add:
+   - `HF_API_TOKEN` — your HuggingFace token
+   - `LLM_PROVIDER` — `huggingface`
+   - `DEBUG` — `False`
+6. Click **Deploy** — the live URL will be `https://academyx-rag-chatbot.onrender.com`
 
-## Project Structure
-
-```
-uniccon/
-├── app/
-│   ├── main.py                 # FastAPI app, routes, static files
-│   ├── api/
-│   │   ├── router.py           # API router
-│   │   └── chat.py             # Chat, upload, health endpoints
-│   ├── core/
-│   │   ├── config.py           # Settings (pydantic-settings + .env)
-│   │   └── logger.py           # Logging setup
-│   ├── models/
-│   │   └── schemas.py          # Pydantic request/response models
-│   ├── services/
-│   │   ├── rag_service.py      # RAG orchestration + greeting handling
-│   │   ├── vector_store.py     # TF-IDF vector store
-│   │   ├── chunking.py         # Text chunking
-│   │   └── llm_service.py      # LLM provider abstraction
-│   └── static/
-│       └── index.html          # Chat UI
-├── data/
-│   ├── faq.txt                 # Academy X FAQs
-│   ├── courses.txt             # Course catalogue
-│   ├── policies.txt            # Student policies
-│   ├── support.txt             # Support information
-│   └── index.pkl               # Pre-built TF-IDF index (29 chunks)
-├── Dockerfile                  # HuggingFace Spaces compatible (port 7860)
-├── render.yaml                 # Render.com deployment config
-├── setup_kb.py                 # Build the knowledge base index
-├── run.py                      # Entry point (reads PORT env var)
-├── requirements.txt
-└── .env                        # Local environment variables
-```
-
----
-
-## Local Setup
-
-### 1. Prerequisites
-- Python 3.8+
-- A [HuggingFace API token](https://huggingface.co/settings/tokens)
-
-### 2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Configure environment
-```bash
-copy .env.example .env
-```
-Edit `.env`:
-```bash
-LLM_PROVIDER=huggingface
-HF_MODEL_NAME=Qwen/Qwen2.5-7B-Instruct
-HF_API_TOKEN=hf_your_token_here
-SIMILARITY_THRESHOLD=0.05
-DEBUG=False
-```
-
-### 4. Build the knowledge base
-```bash
-python setup_kb.py
-```
-
-### 5. Run
-```bash
-python run.py
-```
-
-App starts at `http://localhost:8000`  
-- Chat UI → `http://localhost:8000/ui`  
-- Swagger → `http://localhost:8000/docs`
-
----
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/health` | Service health check |
-| `POST` | `/api/chat` | Ask a question (RAG pipeline) |
-| `POST` | `/api/upload-documents` | Upload `.txt` files to re-index |
-| `GET` | `/api/index-status` | Check knowledge base index status |
-
-### Example — Chat
-```bash
-curl -X POST http://localhost:8000/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{"query": "What courses does Academy X offer?"}'
-```
-```json
-{
-  "query": "What courses does Academy X offer?",
-  "answer": "Academy X offers tracks in Software Development, Data Science & AI, Cybersecurity, Cloud & DevOps, UI/UX Design, and Product Management...",
-  "sources": ["..."],
-  "confidence": 0.72
-}
-```
-
----
-
-## Deployment — HuggingFace Spaces
-
-The repo is pre-configured for HuggingFace Spaces (Docker SDK, port 7860).
-
-```bash
-# Add HF Space as a remote
-git remote add space https://huggingface.co/spaces/YOUR_HF_USERNAME/academyx-chatbot
-
-# Push
-git push space john-eze:main
-```
-
-Then in **Space Settings → Secrets**, add:
-- `HF_API_TOKEN` — your HuggingFace token
-- `DEBUG` — `False`
+> **Note:** The free tier spins down after 15 min of inactivity; the first request after spin-down may take ~30 s.
 
 ---
 
