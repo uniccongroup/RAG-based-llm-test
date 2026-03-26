@@ -1,5 +1,22 @@
 # RAG-based FAQ Chatbot - Architecture Documentation
 
+## Simplicity Over Complexity
+
+Following the **Zen of Python** principles, this implementation is intentionally simple to match the problem's scope. It demonstrates core RAG concepts without obscuring them behind unnecessary abstractions:
+
+> *"Simple is better than complex. Complex is better than complicated."*
+
+
+### Why a Flat Structure?
+
+While enterprise applications often benefit from deeply nested modules (`api/`, `core/`, `services/`), this implementation prioritizes:
+
+1. **Clarity**: All RAG-related code lives in `/rag` - anyone can understand the pipeline in minutes
+2. **Maintainability**: Fewer files mean less context switching during development
+3. **Learning Curve**: New contributors can grasp the entire system without navigating complex hierarchies
+4. **YAGNI (You Aren't Gonna Need It)**: The current scope doesn't require the overhead of multiple abstraction layers
+
+
 ## System Overview
 
 A production-ready Retrieval-Augmented Generation (RAG) system built with FastAPI that powers an intelligent FAQ chatbot for Company X.

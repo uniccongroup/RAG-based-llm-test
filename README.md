@@ -2,6 +2,13 @@
 
 A production-ready, RAG (Retrieval-Augmented Generation) powered FAQ chatbot backend built with FastAPI for an Edu-Tech organization.
 
+## Simplicity Over Complexity
+
+Following the **Zen of Python** principles, this implementation is intentionally simple to match the problem's scope. It demonstrates core RAG concepts without obscuring them behind unnecessary abstractions:
+
+> *"Simple is better than complex. Complex is better than complicated."*
+
+
 **NOTE:**
 This implementation is production-ready. Hallucinations exist, which are common with smaller models like gpt2-medium being used, and more capable models like Llama-2-7B or GPT-3.5-turbo can be used in production for better accuracy.
 
