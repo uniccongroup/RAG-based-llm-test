@@ -12,7 +12,9 @@ pinned: false
 
 A production-ready **RAG (Retrieval-Augmented Generation)** FAQ chatbot backend built with FastAPI for the UNICCON AI Engineer assessment. It powers an intelligent assistant for **Academy X**, a tech training hub, by grounding LLM responses in a proprietary knowledge base.
 
-**Live UI**: `/ui` · **Swagger Docs**: `/docs` · **Branch**: `john-eze`
+🌐 **Live Demo**: [johneze-academyx-chatbot.hf.space/ui](https://johneze-academyx-chatbot.hf.space/ui)  
+📖 **Swagger Docs**: [johneze-academyx-chatbot.hf.space/docs](https://johneze-academyx-chatbot.hf.space/docs)  
+🔀 **Branch**: `john-eze`
 
 ---
 
