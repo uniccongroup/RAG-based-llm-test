@@ -63,18 +63,8 @@ User Query → TF-IDF Retrieval → Top-K Context Chunks → Qwen2.5-7B LLM → 
 
 ### 💬 Chat UI
 A browser-based chat interface is available at **`/`** (or `/ui`).
-
-### 📬 Support
-Contact: support@academyx.abc
     """,
     version="1.0.0",
-    contact={
-        "name": "Academy X Support",
-        "email": "support@academyx.abc",
-    },
-    license_info={
-        "name": "UNICCON GROUP — AI Engineer Assessment",
-    },
     openapi_tags=[
         {
             "name": "chat",
