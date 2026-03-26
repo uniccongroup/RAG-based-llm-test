@@ -1,37 +1,52 @@
-# RAG-based-llm-test
-Project Goal: To design and implement a robust and functional backend service using the FASTAPI framework
+# BrightPath Academy FAQ Chatbot (Aria)
 
-## Core Functionality
-The primary feature of this backend is to power an intelligent, LLM (Large Language Model)-powered FAQ Chatbot for a fictional Edu-Tech organisation, which we shall refer to as "Company X." This chatbot will utilise a RAG (Retrieval-Augmented Generation) architecture to provide highly accurate and contextually relevant answers.
+A RAG-powered student support chatbot for BrightPath Academy, built with
+FastAPI, LangChain, AstraDB, and Google Gemini.
 
-## Key Technical Requirements:
+## Live Demo
+https://brightpath-ai-fi16.onrender.com
 
-Framework: The entire backend must be built using FASTAPI to ensure high performance and asynchronous capabilities.
+## Architecture
+- **Framework**: FastAPI
+- **Vector Store**: AstraDB (Datastax)
+- **Embeddings**: sentence-transformers/all-MiniLM-L6-v2 (local, CPU)
+- **LLM**: Google Gemini 2.5 Flash Lite via LangChain
+- **Knowledge Base**: 5 BrightPath Academy documents (FAQs, Course Catalogue,
+  Student Policies, Onboarding Guide, Contact & Support)
 
-Architecture: Implement a RAG-based system where the LLM is anchored by a proprietary knowledge base (e.g., FAQs, course descriptions, student policies) of Company X. This involves:
+## How it works
+1. Student asks a question via POST /api/chat
+2. The question is embedded using sentence-transformers
+3. AstraDB returns the 5 most semantically similar document chunks
+4. Chunks + question are passed to Gemini with a hardened system prompt
+5. Gemini returns a grounded answer citing only the knowledge base
 
-Data Ingestion/Indexing: A process to load, chunk, and embed the source documents (the "FAQ" knowledge base).
+## Security
+- Input sanitisation blocks known prompt injection patterns
+- System prompt hardened against language switching, persona hijacking,
+  and source extraction attacks
+- Output validator catches accidental system prompt leakage
 
-Retrieval: Efficiently searching the indexed knowledge base to find the most relevant document snippets based on a user's query.
+## Running locally
+1. Clone the repo
+2. Create a `.env` file with your API keys (see `.env.example`)
+3. Run the ingestion notebook once: `brightpath injestion.ipynb`
+4. Start the server: `uvicorn app.main:app --reload --port 8000`
+5. Open http://localhost:8000
 
-Generation: Passing the user query and the retrieved context to the LLM for generating a coherent and accurate answer (llmText generation).
+## Environment variables
+| Variable | Description |
+|---|---|
+| GOOGLE_API_KEY | Google AI Studio API key |
+| ASTRA_DB_API_ENDPOINT | AstraDB database endpoint |
+| ASTRA_DB_APPLICATION_TOKEN | AstraDB application token |
+| ASTRA_DB_NAMESPACE | Keyspace name (default: default_keyspace) |
+| ASTRA_DB_COLLECTION | Collection name (default: brightpath_rag) |
 
-Chatbot Endpoint: A dedicated RESTful endpoint (e.g., /api/chat) to accept user questions and return the LLM-generated response.
-Language Model Integration: Integration with a selected LLM provider (e.g., OpenAI, Hugging Face, Cohere) via their respective APIs.
+## Running tests
+pip install pytest httpx
+pytest tests/ -v
 
-## Project Deliverable:
-
-A complete, working backend application source code, demonstrating all specified functionalities.
-
-# Submission and Timeline:
-Repository: The completed project must be hosted in a public GitHub repository.
-Deadline: The maximum allowed time for completion is 3 days from the receipt of this task.
-Send Your github username and you will be added to the Github repo.
-You should clone the repo and create a branch using by your name.
-You are supposed to push your daily updates to that branch.
-Your daily/weekly progress would be based on the code available on Github.
-
-NOTE: THIS IS AN INDIVIDUAL TASK; COLLABORATIONS CAN LEAD TO DISQUALIFICATION
-
-
-
+## Tech stack
+FastAPI · LangChain · AstraDB · Google Gemini · sentence-transformers ·
+HuggingFace · Docker · Render
