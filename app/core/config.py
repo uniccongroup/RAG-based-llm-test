@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     """Application settings."""
     
     # App Config
-    app_name: str = "UNICCON RAG Chatbot"
+    app_name: str = "Academy X RAG Chatbot"
     debug: bool = False
     log_level: str = "INFO"
     
