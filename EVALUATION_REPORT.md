@@ -37,7 +37,7 @@
 ### Scoring Notes
 
 **Candidate 1 — Namshima Iordye**
-- *Model Selection (3/5):* The generation LLM is Google Gemini 2.5 Flash Lite, a proprietary closed-source model. While highly capable, the criterion specifies open-source or open-access model usage (e.g., Hugging Face). The embedding model (`sentence-transformers/all-MiniLM-L6-v2`) is open-source. A score of 3 reflects partial fulfilment — the integration quality is excellent but the model licence does not meet the open-source criterion.
+- *Model Selection (3/5):* The generation LLM is Google Gemini 2.5 Flash Lite, a proprietary closed-source model. While highly capable, the criterion specifies open-source or open-access model usage (e.g., Hugging Face). The embedding model (`sentence-transformers/all-MiniLM-L6-v2`) is open-source. A score of 3 reflects partial fulfilment — the integration quality is excellent but the model license does not meet the open-source criterion.
 - *Project Deliverable (4/5):* The application is functionally complete; the deduction reflects two gaps: the API response silently drops retrieved source documents, and the chat endpoint makes synchronous LLM/DB calls inside an `async def` handler, blocking the event loop under load.
 
 **Candidate 2 — John Eze**
