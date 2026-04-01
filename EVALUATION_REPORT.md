@@ -1,8 +1,8 @@
 # Candidate Evaluation Report
 ## RAG-based LLM Chatbot Backend — Technical Assessment
 
-**Reviewed by:** GitHub Copilot (technical review)
-**Date:** 1 April 2026
+**Reviewed by:** Mandieng
+**Date:** 30 April 2026
 **Repository:** https://github.com/uniccongroup/RAG-based-llm-test
 
 ---
